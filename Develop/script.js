@@ -22,35 +22,30 @@ if (pwlength < 8) {
  var pwlower = window.confirm("Do you want a lower case letter in your password?");
  var pwupper = window.confirm("Do you want an upper case letter in your password?");
  if(pwchar === true) {
-  console.log(true)  
-  var spcharacter = character.toString()
-  pwarray.push(spcharacter) 
-  console.log(pwarray)
+  pwarray.push(character) 
  }
  else {
   console.log(false)}
 
  if(pwnumber === true) {
-  console.log(true)
-  var spnumber = number.toString()
-  pwarray.push(spnumber)
-  console.log(pwarray)
+  pwarray.push(number)
  }
 
  if(pwlower === true) {
-  console.log(true)
-  var splower = loweralpha.toString()
-  pwarray.push(splower)
-  console.log(pwarray)
- }
+  pwarray.push(loweralpha)}
 
  if(pwupper === true) {
-  console.log(true)
-  var spupper = upperalpha.toString()
-  pwarray.push(spupper)
-  console.log(pwarray)
+  pwarray.push(upperalpha)
  }
   
+ console.log(pwarray)
+ var brownie = pwarray.join("")
+
+ console.log(brownie)
+
+ for (let index = 0; index < pwlength; index++) {
+  var password = ""
+ }
   
   
   
@@ -64,7 +59,7 @@ if (pwlength < 8) {
 
 //var response prompt=("How many characters")
 
-
+// finish the foor loop and pass password to write password
 
 // Write password to the #password input
 function writePassword() {
@@ -79,9 +74,6 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-//ask user how many characters they need
-//do they want upper case or lower case letter
-//numbers or special characters
-//what characters to use? which letters do they want to use lower or upper
+
 //a random seletection criteria/process
 // return the pw
