@@ -5,6 +5,7 @@ var loweralpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 var upperalpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var pwarray = [];
 
+
 var generateBtn = document.querySelector("#generate");
 console.log(generateBtn)
 function generatePassword(){
@@ -21,52 +22,64 @@ if (pwlength < 8) {
  var pwnumber = window.confirm("Do you want a number in your password?");
  var pwlower = window.confirm("Do you want a lower case letter in your password?");
  var pwupper = window.confirm("Do you want an upper case letter in your password?");
- if(pwchar === true) {
+ for (let index = 0; index < pwlength; index++) {
+  var password = ""
+ 
+ if(pwchar === true&&index<pwlength) {
   pwarray.push(character) 
+  index = index + 1
  }
  else {
   console.log(false)}
 
- if(pwnumber === true) {
+ if(pwnumber === true&&index<pwlength) {
   pwarray.push(number)
+  index = index + 1
  }
 
- if(pwlower === true) {
+ if(pwlower === true&&index<pwlength) {
   pwarray.push(loweralpha)}
+  index = index + 1
 
- if(pwupper === true) {
+ if(pwupper === true&&index<pwlength) {
   pwarray.push(upperalpha)
+  index = index + 1
  }
-  
+
+ }
  console.log(pwarray)
  var brownie = pwarray.join("")
 
  console.log(brownie)
 
- for (let index = 0; index < pwlength; index++) {
-  var password = ""
- }
-  
-  
-  
-  
-  
-  
-  
-  
+}
+for (let i = 0; i < pwlength; i++) {
+  if (pwchar === true && i < pwlength) {
+    brownie += character[Math.floor(Math.random() * character.length)];
+    i++;
+  }
+  if (pwnumber === true && i < pwlength) {
+    brownie += number[Math.floor(Math.random() * number.length)];
+    i++;
+  }
+  if (pwlower === true && i < pwlength) {
+    brownie += loweralpha[Math.floor(Math.random() * loweralpha.length)];
+    i++;
+  }
+  if (pwupper === true && i < pwlength) {
+    brownie += upperalpha[Math.floor(Math.random() * upperalpha.length)];
+    i++;
+  }
 }
 
-
-//var response prompt=("How many characters")
-
-// finish the foor loop and pass password to write password
+// return the generated password
+return brownie;
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+function writebrownie() {
+  var brownie = generatePassword();
+  var brownieText = document.querySelector("#password");
+  brownieText.value = password;
 
 }
 
@@ -74,6 +87,3 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-
-//a random seletection criteria/process
-// return the pw
