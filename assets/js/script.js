@@ -1,11 +1,11 @@
 // Assignment Code
 
-
+//this is linking the generate button in html to javascript
 var generateBtn = document.querySelector("#generate");
 
 console.log(generateBtn)
 function generatePassword(event) {
-
+// defining variables
   event.preventDefault()
   var number = "0123456789";
   var character = "!%&,*+-./<>?~";
@@ -14,84 +14,56 @@ function generatePassword(event) {
   var pwarray = [];
   var pwlength = parseInt(prompt("How long do you want your password? Choose between 8 and 128", "8"));
   console.log(pwlength)
-  // if (pwlength < 8) {
-  //   console.log("This is less than 8. Try again.");
-  // }
-  // if (pwlength > 128) {
-  //   console.log("This is bigger than 128. Try again.");
-  // }
 
+// defining confirm prompts
   var pwchar = window.confirm("Do you want a special character in your password?");
   var pwnumber = window.confirm("Do you want a number in your password?");
   var pwlower = window.confirm("Do you want a lower case letter in your password?");
   var pwupper = window.confirm("Do you want an upper case letter in your password?");
-  //for (let i = 0; i < pwlength; i++) {
 
 
+// defining what to do when the user pushes yes for all options
   if (pwchar === true) {
     pwarray.push(character)
-    // pwarray = pwarray.concat(character);
-    //i = i + 1
   }
 
 
   if (pwnumber === true) {
     pwarray.push(number)
-    //  pwarray = pwarray.concat(number);
-    //  i = i + 1
   }
 
   if (pwlower === true) {
     pwarray.push(loweralpha)
   }
-  //pwarray = pwarray.concat(loweralpha);
-  //i = i + 1
+ 
 
   if (pwupper === true) {
     pwarray.push(upperalpha)
-    //pwarray = pwarray.concat(upperalpha);
-    //i = i + 1
   }
 
-  //}
-  //console.log(pwarray)
+
   var brownie = pwarray.join("")
 
   console.log(brownie)
 
-
+ //grabbing characters the user wanted in their password. Creating an array into a string
   if (pwlength >= 8 && pwlength <= 128) {
     var password = ""
     for (let i = 0; i < pwlength; i++) {
       password += brownie.charAt(Math.floor(Math.random() * brownie.length));
     }
-    // if (pwnumber === true && i < pwlength) {
-    //   brownie += number.charAt(Math.floor(Math.random() * number.length));
-    //   i++;
-    // }
-    // if (pwlower === true && i < pwlength) {
-    //   brownie += loweralpha.charAt(Math.floor(Math.random() * loweralpha.length));
-    //   i++;
-    // }
-    // if (pwupper === true && i < pwlength) {
-    //   brownie += upperalpha.charAt(Math.floor(Math.random() * upperalpha.length));
-    //   i++;
-    // }
-    return writebrownie(brownie)
-  }
+    // passing password to write brownie function
+    return writebrownie(password)
+  } 
 }
-// return the generated password
 
-// Write password to the #password input
-function writebrownie(brownie) {
-  //var brownie = generatePassword();
+function writebrownie(password) {
+  
   var brownieText = document.querySelector("#password");
-  brownieText.value = brownie;
-  //return brownie;
+  brownieText.value = password;
+
 
 }
 
 // Add event listener to generate button
-//generateBtn.addEventListener("click", writebrownie);
-
 generateBtn.addEventListener("click", generatePassword);
